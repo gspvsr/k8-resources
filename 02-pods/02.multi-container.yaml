@@ -8,6 +8,6 @@ spec:
     image: nginx
   - name: sidecar
     image: almalinux:8
-    sleep: {"sleep", "200"}
+    sleep: ["sleep", "200"]
 
 
