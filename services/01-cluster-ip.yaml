@@ -11,3 +11,18 @@ spec:
     ports:
       - containerPort: 80
         name: http-web-svc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec: 
+  selector:
+  environment: dev
+  app: frontend
+
+ports:
+- name: name-of-service-port
+  protocol: TCP
+  port: 80 # This port belongs to service
+  targetPort: http-web-svc # This port is belongs to container.
