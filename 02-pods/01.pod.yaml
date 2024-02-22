@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: spimle-pod
+  name: simple-pod
   namespace: roboshop # f you dont mention specific namspae, it will attach to default namespace.
 spec: 
   containers:
