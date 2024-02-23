@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: labels
   annotations:
-    com.project.author: sivakumar_reddy
+    com.project.author: sivakumarreddy
     com.project.name: roboshop
 spec:
   containers:
