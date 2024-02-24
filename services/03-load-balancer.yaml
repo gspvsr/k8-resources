@@ -18,7 +18,7 @@ kind: Service
 metadata:
   name: nginx-service
 spec:
-  type: NodePort
+  type: LoadBalancer # only work for cloud K8 clusters
   selector:
     app: frontend
   ports:
