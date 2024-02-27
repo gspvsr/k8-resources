@@ -1,8 +1,8 @@
 apiVersion: apps/v1
-kind: DaemonSet #Gaurentess one pod in every worker node.
+kind: DaemonSet
 metadata:
   name: fluentd
-  namespace: kube-system # Admin namespace 
+  namespace: kube-system
   labels:
     k8s-app: fluentd-logging
     version: v1
@@ -29,8 +29,7 @@ spec:
         volumeMounts:
         - name: varlog
           mountPath: /var/log
-        volumes:
-        - name: varlog
-          hostPath: # give access to /var/log from the pod.
-            path: /var/log
-        
+      volumes:
+      - name: varlog
+        hostPath:
+          path: /var/log
