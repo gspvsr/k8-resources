@@ -4,13 +4,13 @@ metadata:
   name: ebs-static
 spec:
   storageClassName: ""
+  accessModes:
+  - ReadWriteOnce
+  awsElasticBlockStore:
+    fsType: ext4
+    volumeID: vol-0f245aca44f2f5259
   capacity:
     storage: 20Gi
-  accessModes:
-    - ReadWriteOnce
-  awsElasticBlockStore:
-    volumeID: vol-0f245aca44f2f5259
-    fsType: ext4
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -22,7 +22,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 08Gi
+      storage: 3Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -31,13 +31,13 @@ metadata:
   labels: # these labels belong to deployment
     app: nginx
 spec:
-  replicas: 3
+  replicas: 1
   selector:
-    matchLabels:
+    matchLabels: # these labels should match with pod
       app: nginx
       project: roboshop
       component: frontend
-  template:
+  template: # this is the pod definition
     metadata:
       labels:
         app: nginx
@@ -54,5 +54,5 @@ spec:
           name: nginx-html
       volumes:
       - name: nginx-html
-        persistentVolumeClaim:
+        persistentVolumeClaim: # this is the PVC
           claimName: ebs-static-pvc
