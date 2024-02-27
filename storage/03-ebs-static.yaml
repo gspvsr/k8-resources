@@ -9,4 +9,4 @@
       - ReadWriteMany
     awsElasticBlockStore:
       volumeID: vol-0f245aca44f2f5259
-      fsType: xfs
+      fsType: ext4
