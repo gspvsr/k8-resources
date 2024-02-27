@@ -10,7 +10,7 @@ spec:
     fsType: ext4
     volumeID: vol-060d5b97d45f7558e
   capacity:
-    storage: 20Gi
+    storage: 25Gi
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
