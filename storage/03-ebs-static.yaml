@@ -3,9 +3,9 @@ kind: PersistentVolume
 metadata:
   name: ebs-static
 spec:
+  storageClassName: ""
   capacity:
     storage: 20Gi
-  volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
   awsElasticBlockStore:
@@ -17,6 +17,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: ebs-static-pvc
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
@@ -26,9 +27,11 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: nginx-deployment
+  labels: # these labels belong to deployment
+    app: nginx
 spec:
-  replicas: 10
+  replicas: 5
   selector:
     matchLabels:
       app: nginx
