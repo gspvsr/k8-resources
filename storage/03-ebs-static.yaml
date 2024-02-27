@@ -1,42 +1,15 @@
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: ebs-static
-spec:
-  capacity:
-    storage: 20Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  awsElasticBlockStore:
-    volumeID: vol-0f245aca44f2f5259
-    fsType: ext4
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: ebs-static-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 8Gi
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
-  labels: # belongs to deployment
-    app: nginx
 spec:
-  replicas: 10
+  replicas: 4
   selector:
-    matchLabels: # these labels should match with pod
-        app: nginx
-        project: roboshop
-        component: frontend
-  template: # This is the pod defination.
+    matchLabels:
+      app: nginx
+      project: roboshop
+      component: frontend
+  template:
     metadata:
       labels:
         app: nginx
