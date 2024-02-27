@@ -25,17 +25,17 @@ kind: Deployment
 metadata:
   name: hello-deployment
   labels:
-    app: hello-deployment
+    app: nginx
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-pod
+      app: nginx
   template:
     metadata:
       name: hello-pod
       labels:
-        app: hello-pod
+        app: nginx
     spec:
       containers:
         - name: hello-world
