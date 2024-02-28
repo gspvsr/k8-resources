@@ -19,13 +19,13 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: nginx # has to match .spec.template.metadata.labels
+      app: nginx # Must match .spec.template.metadata.labels
   serviceName: "nginx"
-  replicas: 3 # by default is 1
+  replicas: 3 # Default is 1
   template:
     metadata:
       labels:
-        app: nginx # has to match .spec.selector.matchLabels
+        app: nginx # Must match .spec.selector.matchLabels
     spec:
       containers:
       - name: nginx
@@ -36,7 +36,7 @@ spec:
         volumeMounts:
         - name: www
           mountPath: /usr/share/nginx/html
-          #this is pvc directory.
+          # This is the PVC directory.
   volumeClaimTemplates:
   - metadata:
       name: www
